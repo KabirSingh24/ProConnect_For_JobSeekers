@@ -16,7 +16,7 @@ public class WebCorsConfig {
                 registry.addMapping("/**")
                         .allowedOrigins(
                                 "http://localhost:3000",
-                                "pro-connect-for-job-seekers.vercel.app"
+                                "https://pro-connect-for-job-seekers.vercel.app"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
