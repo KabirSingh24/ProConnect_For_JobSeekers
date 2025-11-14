@@ -26,7 +26,7 @@ public class FileService {
         file.transferTo(new File(filePath));
 
         // Return URL for frontend
-        return "http://localhost:8080/uploads/" + fileName;
+        return "https://proconnect-for-jobseekers.onrender.com/uploads/" + fileName;
     }
 }
 
