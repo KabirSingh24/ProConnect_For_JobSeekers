@@ -98,10 +98,10 @@ export default function DashBoard() {
                                                     router.push(`/view_profile/${post.user.username}`)
                                                 }} className={styles.userProfile} src={`${post.user.profilePicture}`} />
                                                 <div>
-                                                    <div onClick={() => {
+                                                    <div style={{ display: "flex", gap: "1.2rem", justifyContent: "space-between" }}>
+                                                        <p onClick={() => {
                                                         router.push(`/view_profile/${post.user.username}`)
-                                                    }} style={{ display: "flex", gap: "1.2rem", justifyContent: "space-between" }}>
-                                                        <p style={{ fontWeight: "bold" }}>{post.user.name}</p>
+                                                    }} style={{ fontWeight: "bold" }}>{post.user.name}</p>
                                                         {post.user.id === authState.user.id &&
                                                             <div onClick={() => {
                                                                 dispatch(deletePost(
