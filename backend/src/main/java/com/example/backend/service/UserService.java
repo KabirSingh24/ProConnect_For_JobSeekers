@@ -85,21 +85,45 @@ public class UserService {
     public String updateProfilePicture(MultipartFile file, String authHeader) {
         try{
             User user=currentUserUtil.getCurrentUser(authHeader);
+//            String uploadDir = System.getProperty("user.dir") + File.separator + "uploads";
+//            File dir = new File(uploadDir);
+//            if (!dir.exists()) {
+//                dir.mkdirs(); // create folder if not exists
+//            }
+//
+//// Create unique file name (to avoid overwriting old images)
+//            String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+//
+//// Full path on your disk
+//            File destination = new File(dir, fileName);
+//            file.transferTo(destination);
+//
+//// Public URL that client can access
+//            String fileUrl = "http://localhost:8080/uploads/" + fileName;
+//            user.setProfilePicture(fileUrl);
+
+
+            // Upload directory inside project folder
             String uploadDir = System.getProperty("user.dir") + File.separator + "uploads";
+
             File dir = new File(uploadDir);
             if (!dir.exists()) {
-                dir.mkdirs(); // create folder if not exists
+                boolean created = dir.mkdirs();
+                if (!created) {
+                    throw new IOException("Could not create upload directory");
+                }
             }
 
-// Create unique file name (to avoid overwriting old images)
+            // Generate unique file name
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
 
-// Full path on your disk
+            // Save file
             File destination = new File(dir, fileName);
             file.transferTo(destination);
 
-// Public URL that client can access
-            String fileUrl = "http://localhost:8080/uploads/" + fileName;
+            // Build public URL dynamically (no hardcoded localhost)
+            String fileUrl = "/uploads/" + fileName;
+
             user.setProfilePicture(fileUrl);
             userRepo.save(user);
 
