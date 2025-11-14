@@ -1,0 +1,6 @@
+# Maven build folder
+/backend/target/
+
+# IDE files
+backend/.idea/
+/backend/*.iml
