@@ -122,7 +122,7 @@ public class UserService {
             file.transferTo(destination);
 
             // Build public URL dynamically (no hardcoded localhost)
-            String fileUrl = "/uploads/" + fileName;
+            String fileUrl = "https://proconnect-for-jobseekers.onrender.com/uploads/"+ fileName;
 
             user.setProfilePicture(fileUrl);
             userRepo.save(user);
